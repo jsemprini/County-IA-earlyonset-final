@@ -342,7 +342,6 @@ function renderTable(rows, valueCol, outcome, period) {
         <tr>
           <th>Rank</th>
           <th>County</th>
-          <th>FIPS</th>
           <th>Value</th>
         </tr>
       </thead>
@@ -354,7 +353,6 @@ function renderTable(rows, valueCol, outcome, period) {
       <tr>
         <td>${i + 1}</td>
         <td>${d.county}</td>
-        <td>${d.fips}</td>
         <td class="${valueClass(d.value)}">${formatValue(d.value, period)}</td>
       </tr>
     `;
