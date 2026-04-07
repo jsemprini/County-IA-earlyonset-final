@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iowa County Early-Onset Cancer Explorer</title>
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Interactive Public Data Explorer</p>
+        <h1>Iowa County Early-Onset Cancer Explorer</h1>
+        <p class="hero-text">
+          Explore county-level patterns across Iowa by cancer site, sex, outcome,
+          and period. The map and ranked table update instantly as filters change.
+        </p>
+      </div>
+    </header>
+
+    <main class="main-layout">
+      <aside class="card controls-card">
+        <div class="card-header">
+          <div>
+            <h2>Filters</h2>
+            <p>Choose the subgroup and measure you want to display.</p>
+          </div>
+          <button id="resetButton" type="button" class="reset-button">Reset</button>
+        </div>
+
+        <div class="controls-grid">
+          <div class="control-group">
+            <label for="siteSelect">Site</label>
+            <select id="siteSelect"></select>
+          </div>
+
+          <div class="control-group">
+            <label for="sexSelect">Sex</label>
+            <select id="sexSelect"></select>
+          </div>
+
+          <div class="control-group">
+            <label for="outcomeSelect">Outcome</label>
+            <select id="outcomeSelect">
+              <option value="Cancer">Cancer</option>
+              <option value="Population">Population</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="periodSelect">Period</label>
+            <select id="periodSelect">
+              <option value="Percentage Change">Percentage Change</option>
+              <option value="2000-2011">2000-2011</option>
+              <option value="2012-2022">2012-2022</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="selectionSummary" class="selection-summary"></div>
+
+        <div class="info-stack">
+          <section class="info-box">
+            <h3>How to read the map</h3>
+            <p>
+              For percentage change, blue represents lower values and red represents higher values,
+              centered at zero. For the two fixed periods, darker red indicates larger values.
+            </p>
+          </section>
+
+          <section class="info-box">
+            <h3>How to use the table</h3>
+            <p>
+              The county table ranks counties from highest to lowest for the currently displayed
+              measure. Hover over the map to see county-level values.
+            </p>
+          </section>
+
+          <section class="info-box">
+            <h3>Data note</h3>
+            <p>
+              Counties without usable numeric values are omitted from the ranked table and may not
+              appear with a filled color on the map.
+            </p>
+          </section>
+        </div>
+      </aside>
+
+      <section class="card map-card">
+        <div class="card-header">
+          <div>
+            <h2>County Map</h2>
+            <p id="mapSubtitle">Interactive Iowa county choropleth</p>
+          </div>
+        </div>
+
+        <div id="chart" class="chart-area">
+          <div class="loading-state">Loading map...</div>
+        </div>
+      </section>
+
+      <section class="card table-card">
+        <div class="card-header">
+          <div>
+            <h2>Ranked Counties</h2>
+            <p>Sorted from highest to lowest displayed value.</p>
+          </div>
+        </div>
+
+        <div id="table" class="table-area">
+          <div class="loading-state">Loading table...</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Iowa county explorer for early-onset cancer patterns and related population measures.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
