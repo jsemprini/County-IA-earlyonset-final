@@ -298,15 +298,8 @@ function renderMap(rows, valueCol, outcome, period, site, sex) {
   };
 
   const layout = {
-    title: {
-      text: `${site} | ${sex} | ${outcome} | ${period}`,
-      x: 0.5,
-      xanchor: "center",
-      font: {
-        size: 18
-      }
-    },
-    margin: { l: 10, r: 10, t: 60, b: 85 },
+    title: null,
+    margin: { l: 10, r: 10, t: 30, b: 70 },
     geo: {
       fitbounds: "locations",
       visible: false,
