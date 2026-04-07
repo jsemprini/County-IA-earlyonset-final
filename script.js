@@ -145,7 +145,7 @@ function findValueColumn(columns, outcome, period) {
 
 function formatValue(value, period) {
   if (value === null || value === undefined || !Number.isFinite(value)) return "NA";
-  return period === "Percentage Change" ? `${value.toFixed(2)}%` : value.toFixed(2);
+  return value.toFixed(2);
 }
 
 function valueClass(value) {
@@ -267,7 +267,7 @@ function renderMap(rows, valueCol, outcome, period, site, sex) {
     hovertemplate:
       "<b>%{text}</b><br>" +
       `Value: %{z:.2f}` +
-      (period === "Percentage Change" ? "%" : "") +
+      "" +
       "<extra></extra>",
     colorscale: colorscale,
     zmin: zmin,
